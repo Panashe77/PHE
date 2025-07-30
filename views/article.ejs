@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= article.title || 'Article' %></title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/comments.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+</head>
+<body data-article-id="<%= article._id %>">
+  <header>
+    <div class="color-block">
+      <img src="/phe.png" alt="Chronicles Logo" class="logo">
+      <h1>Chronicles of the Past</h1>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <article>
+      <h1><%= article.title %></h1>
+
+      <% if (article.image) { %>
+        <img src="<%= article.image %>" alt="<%= article.title %>" class="article-image">
+      <% } %>
+
+      <p><strong>Author:</strong> Panashe Hove</p>
+      <% if (article.created_at) { %>
+        <p><strong>Published:</strong> <%= new Date(article.created_at).toDateString() %></p>
+      <% } %>
+
+      <div style="white-space: pre-wrap;"><%= article.content %></div>
+
+      <div class="interaction-buttons">
+        <button class="like-button" data-id="<%= article._id %>">👍 (<%= article.likes || 0 %>)</button>
+        <button class="dislike-button" data-id="<%= article._id %>">👎 (<%= article.dislikes || 0 %>)</button>
+      </div>
+    </article>
+
+    <section class="comment-section">
+      <div class="comments-wrp"></div>
+      <div class="reply-input container">
+        <img src="/images/avatars/image-juliusomo.webp" alt="User avatar" class="usr-img">
+        <textarea id="new-comment" class="cmnt-input" placeholder="Add a comment..."></textarea>
+        <button class="bu-primary" id="send-comment">SEND</button>
+      </div>
+    </section>
+
+    <template class="comment-template">
+      <div class="comment">
+        <div class="comment-header">
+          <strong class="usr-name"></strong>
+          <span class="comment-date"></span>
+        </div>
+        <p class="c-body"></p>
+        <div class="score">Score: <span class="score-number"></span></div>
+        <div class="replies"></div>
+      </div>
+    </template>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>

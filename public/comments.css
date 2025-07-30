@@ -1,0 +1,60 @@
+.interaction-buttons {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+  }
+  
+  .like-button,
+  .dislike-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    transition: background-color 0.3s ease;
+  }
+  
+  .like-button:hover,
+  .dislike-button:hover {
+    background-color: #333;
+    color: white;
+  }
+  
+  .comment-section {
+    margin-top: 2rem;
+  }
+  
+  .reply-input {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .usr-img {
+    width: 40px;
+    border-radius: 50%;
+  }
+  
+  .cmnt-input {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .bu-primary {
+    padding: 0.5rem 1rem;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .comment {
+    background-color: #222;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+  }
