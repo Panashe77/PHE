@@ -1,20 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <%- include('partials/gtm-head') %>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PHE</title>
-  <link rel="stylesheet" href="style.css">
+    <!-- Google Tag Manager Head -->
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','G-2S2ZGQ6F6H');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHE</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <%- include('partials/gtm-body') %>
-  <header>
-    <div class="color-block">
-      <img src="/phe.png" alt="Women's Football Logo" class="logo">
-      <h1>Let's do history</h1>
-    </div>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="/" class="nav-link" id="home-link">Home</a></li>
-        <li><a href="/articles/list" class="nav-link" id="previews-link">History Articles</a></li
+    <!-- Google Tag Manager Body -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=G-2S2ZGQ6F6H"
+        height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <header>
+        <div class="color-block">
+            <img src="/phe.png" alt="Women's Football Logo" class="logo">
+            <h1>Let's do history</h1>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link" id="home-link">Home</a></li>
+                <li><a href="/articles/list" class="nav-link" id="previews-link">History Articles</a></li>
+                <li><a href="/articles/general-news" class="nav-link" id="general-link">General Articles</a></li>
+            </ul>
+            <% if (!loggedIn) { %>
+                <a href="/login" class="login-link">Login</a>
+                <a href="/signup" class="signup-link">Sign Up</a>
+            <% } else { %>
+                <span class="welcome-message">Welcome, <%= user?.username %>!</span>
+                <a href="/profile" class="profile-link">
+                    <img src="/user-profile.png" alt="Profile" class="profile-icon">
+                </a>
+                <a href="/logout" class="logout-link">Logout</a>
+            <% } %>
+        </nav>
+        <form id="searchForm" action="/articles/search" method="get">
+            <input type="text" id="searchInput" name="query" placeholder="Search for articles">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+
+    <main>
+        <section id="previews">
+            <h2>Latest articles</h2>
+            <ul>
+                <% articles.forEach(function(article) { %>
+                    <li>
+                        <h2><a href="/articles/<%= article.id %>"><%= article.title %></a></h2>
+                        <% if (article.image) { %>
+                            <a href="/articles/<%= article.id %>">
+                                <img src="<%= article.image %>" alt="<%= article.title %>" class="article-thumbnail">
+                            </a>
+                        <% } %>
+                    </li>
+                <% }); %>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2024 PHE</p>
+    </footer>
+    <script src="/scripts.js"></script>
+</body>
+</html>
