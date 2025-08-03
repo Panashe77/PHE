@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <%- include('partials/gtm-head') %>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= article.title || 'Article' %></title>
@@ -9,6 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
 </head>
 <body data-article-id="<%= article._id %>">
+  <%- include('partials/gtm-body') %>
   <header>
     <div class="color-block">
       <img src="/phe.png" alt="Chronicles Logo" class="logo">
@@ -17,7 +19,6 @@
     <nav>
       <ul class="nav-links">
         <li><a href="/">Home</a></li>
-        
       </ul>
     </nav>
   </header>
